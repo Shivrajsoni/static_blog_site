@@ -8,7 +8,7 @@ function getPostContent(slug){
     const folder = `recipes/` ;
     const file = folder + `${slug}.md`
     const content = fs.readFileSync(file,'utf8');
-
+    
     const matterResult = matter(content)
     return matterResult
 }
@@ -20,10 +20,10 @@ export const generateStaticParams = async() =>{
     )
 }
 
-export async function generateMetadata({params,searchParams}){
+export function generateMetadata({params,searchParams}){
     const id = params?.slug ? "." + params?.slug :""
     return {
-        title: `THE XAVIER BAKERY ${id.replaceAll('_','')}`,
+        title: `THE XAVIER BAKERY ${id.replaceAll("_","")}`,
     }
 }
 
